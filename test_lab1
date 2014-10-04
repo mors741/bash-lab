@@ -1,7 +1,10 @@
 #!/bin/bash
 
 #Тест-драйвер для lab1
+
+#Создание временных файлов
 cd /home/evgeny/BashLabs/Lab1-sem5
+int=1
 while [ $int -le 25 ]
 do
 	touch arg$int
@@ -12,15 +15,26 @@ done
 ./lab1 /home/evgeny/Bash/temp 
 ./lab1 /home mytouch
 ./lab1 sdfsd sadfkl13fesd
+echo
 
 #Проверка существования каталока FROM
 ./lab1 /pkljel/sdfs mytouch arg1 arg2 arg3 arg4
 ./lab1 /home/evgeny/Bash/mytest/ name arg1 arg2 arg3
 ./lab1 askfj1d/ mytouch arg1
+echo
+
+#Проверка прав на исполнение каталога FROM
+chmod 444 temp
+./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+chmod 666 temp
+./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+chmod 775 temp
+echo
 
 #Проверка существования программы NAME
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexist arg1 arg2 arg3
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexisttoo arg1 arg2 arg3
+echo
 
 #Проверка прав на исполнение программы NAME
 chmod 444 temp/mytouch 
@@ -28,6 +42,19 @@ chmod 444 temp/mytouch
 chmod 666 temp/mytouch 
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
 chmod 777 temp/mytouch
+echo
+
+#Проверка существования файлов FILES
+rm arg2
+./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+touch arg2
+rm arg1 arg2
+./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+touch arg1 arg2
+rm arg3
+./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+touch arg3
+echo
 
 #Копирование программы в случае ее отсутствия
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1
@@ -41,6 +68,8 @@ then
         echo "mytouch не скопирована в текущий каталог, так как уже присутствует в нем"
 	rm mytouch
 fi
+echo
+
 #Выполнение программы для всех файлов
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1
 if [ $? -eq 0 ]
@@ -56,6 +85,7 @@ fi
 if [ $? -eq 0 ]
 then
         echo "Succes3"
+	echo
 fi
 
 #Удаление временных файлов
