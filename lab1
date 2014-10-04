@@ -26,14 +26,14 @@ then
 fi
 
 #Проверка существования программы NAME
-if [ ! -r $FROM/$NAME -o ! -x $FROM/$NAME ]
+if [ ! -e $FROM/$NAME ]
 then
 	echo -e "\033[0;31mError: the program $NAME does not exist\033[0m"
 	exit 4 
 fi
 
 #Проверка прав на исполнение программы NAME 
-if [ ! -x $NAME ]
+if [ ! -x $FROM/$NAME ]
 then
         echo -e "\033[0;31mError: the program $NAME need the execution permisson\033[0m"
         exit 5
@@ -50,7 +50,7 @@ shift
 shift
 while [ $# -gt 0 ]
 do
-	if [ ! -f $1 ]; then
+	if [ ! -f $1 ]; then  #Проверка существования файлов FILES
 		echo -e "\033[0;31mError: the file $1 does not exist\033[0m"
 		exit 6
 	fi		
