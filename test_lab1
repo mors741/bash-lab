@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#Тест-драйвер для lab1
+cd /home/evgeny/Bash
+#Проверка кол-ва аргументов
+lab1 /home/evgeny/Bash/temp 
+lab1 /home mytouch
+lab1 sdfsd sadfkl13fesd
+
+#Проверка существования каталока FROM
+lab1 /pkljel/sdfs mytouch arg1 arg2 arg3 arg4
+lab1 /home/evgeny/Bash/mytest/ name arg1 arg2 arg3
+lab1 askfj1d/ mytouch arg1
+
+#Проверка существования программы NAME и прав на ее чтение и исполнения
+lab1 /home/evgeny/Bash/temp notexist arg1 arg2 arg3 
+lab1 /home/evgeny/Bash/temp notread arg1 arg2 arg3 #chmod 377 notread
+lab1 /home/evgeny/Bash/temp notexec arg1 arg2 arg3 #chmod 666 notexec
+
+#Копирование программы в случае ее отсутствия
+lab1 /home/evgeny/Bash/temp mytouch arg1
+if [ -e mytouch ] 
+then
+	echo "mytouch скопирована в текущий каталог"
+fi
+lab1 /home/evgeny/Bash/temp mytouch arg1
+if [ -e mytouch ] 
+then
+        echo "mytouch не скопирована в текущий каталог, так как уже присутствует в нем"
+fi
+rm arg* mytouch
+#Выполнение программы для всех файлов
+lab1 /home/evgeny/Bash/temp mytouch arg1
+if [ $? -eq 0 ]
+then
+	echo "Succes1"
+	rm arg* mytouch
+fi
+lab1 /home/evgeny/Bash/temp mytouch arg1 arg2 arg3 arg4 arg5
+if [ $? -eq 0 ]
+then
+        echo "Succes2"
+        rm arg* mytouch
+fi
+lab1 /home/evgeny/Bash/temp mytouch arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10 arg11 arg12 arg13 arg14 arg15 arg16 arg17 arg18 arg19 arg20 arg21 arg22 arg23 arg24 arg25
+if [ $? -eq 0 ]
+then
+        echo "Succes3"
+        rm arg* mytouch
+fi
