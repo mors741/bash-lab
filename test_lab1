@@ -11,19 +11,19 @@ do
 	let "int+=1"
 done
 
-#Проверка кол-ва аргументов
+#Проверка кол-ва аргументов (1)
 ./lab1 /home/evgeny/Bash/temp 
 ./lab1 /home mytouch
 ./lab1 sdfsd sadfkl13fesd
 echo
 
-#Проверка существования каталока FROM
+#Проверка существования каталока FROM (2)
 ./lab1 /pkljel/sdfs mytouch arg1 arg2 arg3 arg4
 ./lab1 /home/evgeny/Bash/mytest/ name arg1 arg2 arg3
 ./lab1 askfj1d/ mytouch arg1
 echo
 
-#Проверка прав на исполнение каталога FROM
+#Проверка прав на исполнение каталога FROM (3)
 chmod 444 temp
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
 chmod 666 temp
@@ -31,12 +31,12 @@ chmod 666 temp
 chmod 775 temp
 echo
 
-#Проверка существования программы NAME
+#Проверка существования программы NAME (4)
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexist arg1 arg2 arg3
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexisttoo arg1 arg2 arg3
 echo
 
-#Проверка прав на исполнение программы NAME
+#Проверка прав на исполнение программы NAME (5)
 chmod 444 temp/mytouch 
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
 chmod 666 temp/mytouch 
@@ -44,7 +44,7 @@ chmod 666 temp/mytouch
 chmod 777 temp/mytouch
 echo
 
-#Проверка существования файлов FILES
+#Проверка существования файлов FILES (6)
 rm arg2
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
 touch arg2
