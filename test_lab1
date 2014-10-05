@@ -60,12 +60,12 @@ echo
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1
 if [ -e mytouch ] 
 then
-	echo "mytouch скопирована в текущий каталог"
+	echo "the program was copied to the current directory"
 fi
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1
 if [ -e mytouch ] 
 then
-        echo "mytouch не скопирована в текущий каталог, так как уже присутствует в нем"
+        echo "the program wasn't copied to the current directory, becouse it's alreday present in it"
 	rm mytouch
 fi
 echo
