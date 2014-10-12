@@ -45,15 +45,22 @@ then
 	cp $FROM/$NAME .
 fi
 
-#Выполнение программы для всех файлов
+#Сбрасывание первых двух аргументов
 shift
 shift
-while [ $# -gt 0 ]
+
+#Проверка существования файлов FILES
+for n in $@
 do
-	if [ ! -f $1 ]; then  #Проверка существования файлов FILES
-		echo -e "\033[0;31mError: the file $1 does not exist\033[0m"
-		exit 6
-	fi		
+   if [ ! -f $n ]; then  
+	echo -e "\033[0;31mError: the file $n does not exist\033[0m"
+	exit 6
+   fi		
+done
+
+#Выпоолнение программы
+while [ $# -gt 0 ]
+do		
 	./$NAME $1
 	shift
 done
