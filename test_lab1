@@ -12,80 +12,224 @@ do
 done
 
 #Проверка кол-ва аргументов (1)
-./lab1 /home/evgeny/Bash/temp 
-./lab1 /home mytouch
-./lab1 sdfsd sadfkl13fesd
+MSG=$(./lab1 /home/evgeny/Bash/temp) 
+if [ $? -eq 1 ]; then
+   echo "Test №1 completed succesfully"
+else
+   echo "Test №1 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
+MSG=$(./lab1 /home mytouch)
+if [ $? -eq 1 ]; then
+   echo "Test №2 completed succesfully"
+else
+   echo "Test №2 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
+MSG=$(./lab1 sdfsd sadfkl13fesd)
+if [ $? -eq 1 ]; then
+   echo "Test №3 completed succesfully"
+else
+   echo "Test №3 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
 echo
 
 #Проверка существования каталока FROM (2)
-./lab1 /pkljel/sdfs mytouch arg1 arg2 arg3 arg4
-./lab1 /home/evgeny/Bash/mytest/ name arg1 arg2 arg3
-./lab1 askfj1d/ mytouch arg1
+MSG=$(./lab1 /pkljel/sdfs mytouch arg1 arg2 arg3 arg4)
+if [ $? -eq 2 ]; then
+   echo "Test №4 completed succesfully"
+else
+   echo "Test №4 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
+MSG=$(./lab1 /home/evgeny/Bash/mytest/ name arg1 arg2 arg3)
+if [ $? -eq 2 ]; then
+   echo "Test №5 completed succesfully"
+else
+   echo "Test №5 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
+MSG=$(./lab1 askfj1d/ mytouch arg1)
+if [ $? -eq 2 ]; then
+   echo "Test №6 completed succesfully"
+else
+   echo "Test №6 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
 echo
 
 #Проверка прав на исполнение каталога FROM (3)
 chmod 444 temp
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3)
+if [ $? -eq 3 ]; then
+   echo "Test №7 completed succesfully"
+else
+   echo "Test №7 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
 chmod 666 temp
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3)
+if [ $? -eq 3 ]; then
+   echo "Test №8 completed succesfully"
+else
+   echo "Test №8 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
 chmod 775 temp
+
 echo
 
 #Проверка существования программы NAME (4)
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexist arg1 arg2 arg3
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexisttoo arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexist arg1 arg2 arg3)
+if [ $? -eq 4 ]; then
+   echo "Test №9 completed succesfully"
+else
+   echo "Test №9 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp notexisttoo arg1 arg2 arg3)
+if [ $? -eq 4 ]; then
+   echo "Test №10 completed succesfully"
+else
+   echo "Test №10 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
 echo
 
 #Проверка прав на исполнение программы NAME (5)
 chmod 444 temp/mytouch 
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3)
+if [ $? -eq 5 ]; then
+   echo "Test №11 completed succesfully"
+else
+   echo "Test №11 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
 chmod 666 temp/mytouch 
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3)
+if [ $? -eq 5 ]; then
+   echo "Test №12 completed succesfully"
+else
+   echo "Test №12 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
+
 chmod 777 temp/mytouch
 echo
 
 #Проверка существования файлов FILES (6)
 rm arg2
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3)
+if [ $? -eq 6 ]; then
+   echo "Test №13 completed succesfully"
+else
+   echo "Test №13 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
 touch arg2
+
 rm arg1 arg2
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3)
+if [ $? -eq 6 ]; then
+   echo "Test №14 completed succesfully"
+else
+   echo "Test №14 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
 touch arg1 arg2
+
 rm arg3
-./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3
+MSG=$(./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3)
+if [ $? -eq 6 ]; then
+   echo "Test №15 completed succesfully"
+else
+   echo "Test №15 failed"
+fi
+if [ "$1" = "-m" ]; then
+	echo "   " $MSG
+fi
 touch arg3
+
 echo
 
 #Копирование программы в случае ее отсутствия
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1
-if [ -e mytouch ] 
-then
-	echo "the program was copied to the current directory"
+if [ $? -eq 0 -a -e mytouch ]; then
+   echo "Test №16 completed succesfully"
+else
+   echo "Test №16 failed"
 fi
+
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1
-if [ -e mytouch ] 
-then
-        echo "the program wasn't copied to the current directory, becouse it's alreday present in it"
-	rm mytouch
+if [ $? -eq 0 -a -e mytouch ]; then
+   echo "Test №17 completed succesfully"
+else
+   echo "Test №17 failed"
 fi
+
+rm mytouch
 echo
 
 #Выполнение программы для всех файлов
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1
-if [ $? -eq 0 ]
-then
-	echo "Succes1"
+if [ $? -eq 0 ]; then
+   echo "Test №18 completed succesfully"
+else
+   echo "Test №18 failed"
 fi
+
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3 arg4 arg5
-if [ $? -eq 0 ]
-then
-        echo "Succes2"
+if [ $? -eq 0 ]; then
+   echo "Test №19 completed succesfully"
+else
+   echo "Test №19 failed"
 fi
+
 ./lab1 /home/evgeny/BashLabs/Lab1-sem5/temp mytouch arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10 arg11 arg12 arg13 arg14 arg15 arg16 arg17 arg18 arg19 arg20 arg21 arg22 arg23 arg24 arg25
-if [ $? -eq 0 ]
-then
-        echo "Succes3"
-	echo
+if [ $? -eq 0 ]; then
+   echo "Test №20 completed succesfully"
+else
+   echo "Test №20 failed"
 fi
 
 #Удаление временных файлов
